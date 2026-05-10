@@ -31,11 +31,11 @@ jobs:
 
       - name: Rename for distribution
         working-directory: Build/dist
-        run: mv index.html Web-Template.html
+        run: mv index.html InfiniteScroll.html
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Web-Template-Standalone
-          path: Build/dist/Web-Template.html
+          name: InfiniteScroll-Standalone
+          path: Build/dist/InfiniteScroll.html
           if-no-files-found: error

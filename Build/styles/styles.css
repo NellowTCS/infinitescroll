@@ -1,25 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background: linear-gradient(180deg,
+            #ff1744 0%, #ff4569 5%, #ff6b8a 10%, #ffb3ba 15%,
+            #ffeaa7 20%, #fdcb6e 25%, #e17055 30%, #d63031 35%,
+            #fd79a8 40%, #a29bfe 45%, #6c5ce7 50%, #74b9ff 55%,
+            #00cec9 60%, #55efc4 65%, #fab1a0 70%, #fd79a8 80%,
+            #a29bfe 90%, #ff1744 100%);
+    background-size: 100% 6000vh;
+    animation: gradientFlow 60s linear infinite;
+    will-change: background-position;
 }
 
-button {
-    background: #2196f3;
-    color: white;
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 0% -100%;
+    }
+}
+
+.button-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.toggle-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    color: white;
+    font-size: 18px;
     cursor: pointer;
-    font-size: 16px;
+    pointer-events: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:hover {
-    background: #1976d2;
+.toggle-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.08);
 }
 
-.square {
-  width: 100px;
-  height: 100px;
-  background-color: blue;
+.toggle-button.paused {
+    background: rgba(255, 80, 80, 0.4);
+}
+
+.content {
+    height: 800vh;
+    /* Start tall */
+    min-height: 100vh;
+}
+
+/* Gentle depth overlay */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.08) 100%);
+    pointer-events: none;
+    z-index: 1;
+    animation: breathe 15s ease-in-out infinite;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
 }

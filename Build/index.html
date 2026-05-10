@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>My Page</title>
-    <link rel="stylesheet" data-inline="true" href="./styles/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Gradient</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
-    <script type="module" data-inline="true" src="./src/main.js"></script>
-    <h1>Hello, world!</h1>
-    <p>This is a demo page.</p>
-    <button onclick="testFunction()">Click me!</button>
-    <button onclick="outputToPage()">Show a square.</button>
-</body>
+    <div class="button-overlay">
+        <button class="toggle-button" id="toggleBtn">
+            <i class="fas fa-pause"></i>
+        </button>
+    </div>
 
+    <div class="content" id="content"></div>
+
+    <script src="./src/main.js"></script>
+</body>
 </html>
