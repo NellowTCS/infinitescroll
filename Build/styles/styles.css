@@ -8,14 +8,14 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
 
-    --gradient-color-0: hsl(0deg 100% 55%);
-    --gradient-color-1: hsl(30deg 100% 55%);
-    --gradient-color-2: hsl(60deg 100% 55%);
-    --gradient-color-3: hsl(120deg 100% 45%);
-    --gradient-color-4: hsl(180deg 100% 50%);
-    --gradient-color-5: hsl(240deg 100% 60%);
-    --gradient-color-6: hsl(300deg 100% 60%);
-    --gradient-color-7: hsl(340deg 100% 60%);
+    --gradient-color-0: hsl(340deg 75% 82%);
+    --gradient-color-1: hsl(0deg   70% 83%);
+    --gradient-color-2: hsl(20deg  75% 83%);
+    --gradient-color-3: hsl(40deg  72% 83%);
+    --gradient-color-4: hsl(55deg  68% 84%);
+    --gradient-color-5: hsl(100deg 55% 80%);
+    --gradient-color-6: hsl(170deg 58% 80%);
+    --gradient-color-7: hsl(220deg 65% 82%);
 
     background: linear-gradient(
         135deg,
@@ -30,7 +30,7 @@ body {
         var(--gradient-color-7) 100%
     );
 
-    background-color: black;
+    background-color: #fce4ec;
 
     transition:
         --gradient-color-0 8s linear,
@@ -61,50 +61,52 @@ body {
     height: 56px;
     border: none;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    color: white;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #7c6b8a;
     font-size: 18px;
     cursor: pointer;
     pointer-events: auto;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    box-shadow:
+        0 4px 20px rgba(120, 80, 140, 0.12),
+        inset 0 1px 0 rgba(255,255,255,0.5);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .toggle-button:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.5);
     transform: scale(1.08);
+    box-shadow:
+        0 6px 24px rgba(120, 80, 140, 0.18),
+        inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
 .toggle-button.paused {
-    background: rgba(255, 80, 80, 0.4);
+    background: rgba(255, 140, 160, 0.4);
+    color: #9e5070;
 }
 
 .content {
     height: 800vh;
-    /* Start tall */
     min-height: 100vh;
 }
 
-/* Gentle depth overlay */
 body::after {
     content: '';
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.08) 100%);
+    background: radial-gradient(
+        circle at center,
+        transparent 50%,
+        rgba(180, 140, 160, 0.06) 100%
+    );
     pointer-events: none;
     z-index: 1;
     animation: breathe 15s ease-in-out infinite;
 }
 
 @keyframes breathe {
-
-    0%,
-    100% {
-        opacity: 0.6;
-    }
-
-    50% {
-        opacity: 0.3;
-    }
+    0%, 100% { opacity: 0.5; }
+    50%      { opacity: 0.2; }
 }

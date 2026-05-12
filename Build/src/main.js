@@ -5,21 +5,23 @@ const content = document.getElementById('content');
 let isPlaying = true;
 
 const rainbow = [
-    'hsl(0deg 100% 55%)',
-    'hsl(15deg 100% 55%)',
-    'hsl(30deg 100% 55%)',
-    'hsl(45deg 100% 55%)',
-    'hsl(60deg 100% 55%)',
-    'hsl(90deg 100% 50%)',
-    'hsl(120deg 100% 45%)',
-    'hsl(150deg 100% 45%)',
-    'hsl(180deg 100% 50%)',
-    'hsl(210deg 100% 55%)',
-    'hsl(240deg 100% 60%)',
-    'hsl(270deg 100% 60%)',
-    'hsl(300deg 100% 60%)',
-    'hsl(320deg 100% 60%)',
-    'hsl(340deg 100% 60%)',
+    'hsl(340deg 75% 82%)',
+    'hsl(355deg 70% 83%)',
+    'hsl(10deg  72% 83%)',
+    'hsl(20deg  75% 83%)',
+    'hsl(35deg  72% 83%)',
+    'hsl(50deg  70% 84%)',
+    'hsl(65deg  62% 84%)',
+    'hsl(85deg  55% 82%)',
+    'hsl(120deg 50% 80%)',
+    'hsl(150deg 55% 80%)',
+    'hsl(175deg 58% 80%)',
+    'hsl(200deg 65% 82%)',
+    'hsl(225deg 65% 82%)',
+    'hsl(255deg 58% 82%)',
+    'hsl(285deg 55% 82%)',
+    'hsl(310deg 62% 82%)',
+    'hsl(325deg 68% 82%)',
 ];
 
 const propertyNames = [
@@ -52,24 +54,17 @@ if (window.CSS && CSS.registerProperty) {
 let cycle = 0;
 let interval;
 
-// Smooth infinite color cycling
 function updateGradient() {
     propertyNames.forEach((prop, index) => {
-        const color =
-            rainbow[(cycle + index) % rainbow.length];
-
+        const color = rainbow[(cycle + index) % rainbow.length];
         body.style.setProperty(prop, color);
     });
-
     cycle++;
 }
 
 function startAnimation() {
     updateGradient();
-
-    interval = setInterval(() => {
-        updateGradient();
-    }, 8000);
+    interval = setInterval(updateGradient, 8000);
 }
 
 function stopAnimation() {
@@ -81,20 +76,13 @@ startAnimation();
 // Pause/play button
 toggleBtn.addEventListener('click', () => {
     isPlaying = !isPlaying;
-
     if (isPlaying) {
         startAnimation();
-
-        toggleBtn.innerHTML =
-            '<i class="fas fa-pause"></i>';
-
+        toggleBtn.innerHTML = '<i class="fas fa-pause"></i>';
         toggleBtn.classList.remove('paused');
     } else {
         stopAnimation();
-
-        toggleBtn.innerHTML =
-            '<i class="fas fa-play"></i>';
-
+        toggleBtn.innerHTML = '<i class="fas fa-play"></i>';
         toggleBtn.classList.add('paused');
     }
 });
@@ -107,18 +95,10 @@ function extendContent() {
     content.style.height = currentHeight + 'vh';
 }
 
-window.addEventListener(
-    'scroll',
-    () => {
-        const scrollBottom =
-            window.scrollY + window.innerHeight;
-
-        const docHeight =
-            document.documentElement.scrollHeight;
-
-        if (scrollBottom > docHeight - 3000) {
-            extendContent();
-        }
-    },
-    { passive: true }
-);
+window.addEventListener('scroll', () => {
+    const scrollBottom = window.scrollY + window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    if (scrollBottom > docHeight - 3000) {
+        extendContent();
+    }
+}, { passive: true });
