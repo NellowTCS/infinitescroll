@@ -60,7 +60,7 @@ window.addEventListener('scroll', () => {
     velocityTimeout = setTimeout(() => {
         const velocity = Math.abs(window.scrollY - lastScroll);
         if (isPlaying && velocity > 800) {
-            body.style.animationDuration = '35s';
+            body.style.animationDuration = '20s';
         } else if (isPlaying) {
             body.style.animationDuration = '60s';
         }

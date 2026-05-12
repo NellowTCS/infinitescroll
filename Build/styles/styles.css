@@ -13,7 +13,7 @@ body {
             #fd79a8 40%, #a29bfe 45%, #6c5ce7 50%, #74b9ff 55%,
             #00cec9 60%, #55efc4 65%, #fab1a0 70%, #fd79a8 80%,
             #a29bfe 90%, #ff1744 100%);
-    background-size: 100% 6000vh;
+    background-size: 100% 200%;
     animation: gradientFlow 60s linear infinite;
     will-change: background-position;
 }
@@ -24,7 +24,7 @@ body {
     }
 
     100% {
-        background-position: 0% -100%;
+        background-position: 0% 100%;
     }
 }
 
