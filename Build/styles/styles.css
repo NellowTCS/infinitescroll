@@ -7,25 +7,40 @@
 body {
     overflow-x: hidden;
     min-height: 100vh;
-    background: linear-gradient(180deg,
-            #ff1744 0%, #ff4569 5%, #ff6b8a 10%, #ffb3ba 15%,
-            #ffeaa7 20%, #fdcb6e 25%, #e17055 30%, #d63031 35%,
-            #fd79a8 40%, #a29bfe 45%, #6c5ce7 50%, #74b9ff 55%,
-            #00cec9 60%, #55efc4 65%, #fab1a0 70%, #fd79a8 80%,
-            #a29bfe 90%, #ff1744 100%);
-    background-size: 100% 200%;
-    animation: gradientFlow 60s linear infinite;
-    will-change: background-position;
-}
 
-@keyframes gradientFlow {
-    0% {
-        background-position: 0% 0%;
-    }
+    --gradient-color-0: hsl(0deg 100% 55%);
+    --gradient-color-1: hsl(30deg 100% 55%);
+    --gradient-color-2: hsl(60deg 100% 55%);
+    --gradient-color-3: hsl(120deg 100% 45%);
+    --gradient-color-4: hsl(180deg 100% 50%);
+    --gradient-color-5: hsl(240deg 100% 60%);
+    --gradient-color-6: hsl(300deg 100% 60%);
+    --gradient-color-7: hsl(340deg 100% 60%);
 
-    100% {
-        background-position: 0% 50%;
-    }
+    background: linear-gradient(
+        135deg,
+
+        var(--gradient-color-0) 0%,
+        var(--gradient-color-1) 14%,
+        var(--gradient-color-2) 28%,
+        var(--gradient-color-3) 42%,
+        var(--gradient-color-4) 56%,
+        var(--gradient-color-5) 70%,
+        var(--gradient-color-6) 84%,
+        var(--gradient-color-7) 100%
+    );
+
+    background-color: black;
+
+    transition:
+        --gradient-color-0 8s linear,
+        --gradient-color-1 8s linear,
+        --gradient-color-2 8s linear,
+        --gradient-color-3 8s linear,
+        --gradient-color-4 8s linear,
+        --gradient-color-5 8s linear,
+        --gradient-color-6 8s linear,
+        --gradient-color-7 8s linear;
 }
 
 .button-overlay {
