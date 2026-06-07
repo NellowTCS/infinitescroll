@@ -1,7 +1,7 @@
 {
   "name": "infinitescroll",
-  "version": "0.1.0",
-  "description": "My typical web dev starter project.",
+  "version": "1.0.0",
+  "description": "An infinite scrolling gradient with interactive controls, themes, and mouse-reactive effects.",
   "main": "index.js",
   "scripts": {
     "dev": "vite",

@@ -3,7 +3,7 @@ import { VitePWA } from "vite-plugin-pwa";
 import { viteSingleFile } from "vite-plugin-singlefile";
 import fs from "fs";
 
-// SVG inliner plugin
+// SVG inliner plugin for single-file builds
 function inlineSvgFaviconPlugin(options) {
   return {
     name: "inline-svg-favicon",
@@ -11,21 +11,17 @@ function inlineSvgFaviconPlugin(options) {
     transformIndexHtml(html) {
       if (!fs.existsSync(options.svg)) return html;
       let svgContent = fs.readFileSync(options.svg, "utf8");
-      // Remove XML header if present, minify spaces
       svgContent = svgContent
         .replace(/<\?xml[^>]*>\s*/g, "")
         .replace(/\s+/g, " ");
-      // Base64 encode the SVG
       const base64 = Buffer.from(svgContent).toString("base64");
       const faviconTag = `<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,${base64}"/>\n`;
-      // Insert favicon into <head>
       return html.replace(/<head>(.*?)/, `<head>$1\n  ${faviconTag}`);
     },
   };
 }
 
 export default defineConfig(({ mode }) => {
-  // Load environment variables
   const env = loadEnv(mode, process.cwd(), "");
   const isSingleFile = env.SINGLE_FILE === "true";
 
@@ -39,10 +35,12 @@ export default defineConfig(({ mode }) => {
           manifest: {
             name: 'InfiniteScroll',
             short_name: 'InfiniteScroll',
+            description: 'An infinite scrolling gradient with interactive controls',
             start_url: './',
             display: 'standalone',
-            theme_color: '#00bfff',
-            background_color: '#00bfff',
+            theme_color: '#f8b4c8',
+            background_color: '#fce4ec',
+            categories: ['entertainment', 'utilities'],
           },
           pwaAssets: {
             image: 'public/favicon.png',
